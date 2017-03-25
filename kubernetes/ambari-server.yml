@@ -17,9 +17,9 @@ spec:
     spec:
       containers:
       - name: ambari-server
+        image: anhi/ambari-server
         securityContext:
           privileged: true
-        image: hortonworks/ambari-server:2.2.1-v20
         volumeMounts:
             - name: ambari-conf
               mountPath: /etc/systemd/system/ambari-server.service.d

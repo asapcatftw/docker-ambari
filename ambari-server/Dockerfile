@@ -12,6 +12,7 @@ RUN curl -o /tmp/ambari-shell.jar https://s3-eu-west-1.amazonaws.com/maven.seque
 ADD shell/install-cluster.sh /tmp/
 ADD shell/wait-for-host-number.sh /tmp/
 ADD shell/ambari-shell.sh /tmp/
+ADD shell/multi-node-hdfs-yarn-2.5 /tmp/
 
 ENV PLUGIN_PATH /plugins
 WORKDIR /tmp

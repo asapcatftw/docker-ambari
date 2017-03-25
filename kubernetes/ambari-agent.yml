@@ -17,12 +17,12 @@ spec:
     spec:
       containers:
       - name: amb-agent
-        image: hortonworks/ambari-agent:2.2.1-v20
+        image: anhi/ambari-agent
         securityContext:
           privileged: true
         resources:
           requests:
-            memory: "16G"
+            memory: "6G"
             cpu: "2000m"
           limits:
             memory: "20G"
