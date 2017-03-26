@@ -1,0 +1,18 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: zeppelin-ui
+  namespace: ambari
+  labels:
+    name: zeppelin-ui
+
+spec:
+  ports:
+    # the port that this service should serve on
+    - port: 9995
+      targetPort: 9995
+      protocol: TCP
+  type: NodePort
+  selector:
+    name: zeppelin-server
