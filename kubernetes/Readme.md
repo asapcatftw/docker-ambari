@@ -1,4 +1,7 @@
  # Prove of concept for ambari on kubernetes
+ 
+ 
+verison 2.7.5.0 
 
 I was interested in if it is generally possible to run ambari on top of kubernetes.
 If this is a good idea  is a separate discussion, I just wanted to see if it is
