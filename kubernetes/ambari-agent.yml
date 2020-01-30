@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: amb-agent
-        image: cool2zap/ambari-agent
+        image: cool2zap/ambari-agent:latest
         securityContext:
           privileged: true
         resources:
@@ -33,8 +33,10 @@ spec:
             - name: ambari-scripts
               mountPath: /scripts
         env: 
+          - name: USE_CONSUL_DNS
+            value: "false"
           - name: AMBARI_SERVER
-            value: ambari-server.ambari.svc.cluster.local
+            value: ambari-server
       volumes:
           - name: ambari-conf
             configMap: 

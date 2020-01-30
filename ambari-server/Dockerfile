@@ -1,4 +1,4 @@
-FROM hortonworks/ambari-base:7.2-v7
+FROM cool2zap/ambari-base:latest
 MAINTAINER Hortonworks
 
 # add ambari repo
