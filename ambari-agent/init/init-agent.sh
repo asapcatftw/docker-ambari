@@ -2,7 +2,7 @@
 
 : ${CLOUD_PLATFORM:="none"}
 : ${USE_CONSUL_DNS:="true"}
-: ${AMBARI_SERVER_ADDR:="ambari-8080.service.consul"}
+: ${AMBARI_SERVER_ADDR:="ambari-server"}
 
 [[ "TRACE" ]] && set -x
 
