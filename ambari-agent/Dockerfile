@@ -1,5 +1,5 @@
 FROM cool2zap/ambari-base:latest
-MAINTAINER Hortonworks
+MAINTAINER asapcatftw
 
 # add ambari repo
 ADD ambari.repo /etc/yum.repos.d/
@@ -18,6 +18,7 @@ RUN sed -i "/\[agent\]/ a hostname_script=\/etc\/ambari-agent\/conf\/internal-ho
 
 # do not use the docker0 interface
 # RUN sed -i "s/\"ifconfig\"/\"ifconfig eth0\"/" /usr/lib/python2.6/site-packages/ambari_agent/Facter.py
+RUN sed -i "s/\"ifconfig\"/\"ifconfig eth0\"/" /usr/lib/ambari-agent/lib/ambari_agent/Facter.py
 
 # Add jars from packer image
 ADD dash-azure-storage-2.2.0.jar /usr/lib/hadoop/lib/
