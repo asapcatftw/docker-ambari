@@ -9,7 +9,4 @@ data:
     Environment="USE_CONSUL_DNS=false"
   20-ambari-server.conf: |
     [Service]
-    Environment="AMBARI_SERVER_ADDR=ambari-server.ambari.svc.cluster.local"
-  30-ambari-internal-hostname.conf: |
-    [Service]
-    ExecStartPre=/bin/bash /scripts/write-custom-hostname.sh
+    Environment="AMBARI_SERVER_ADDR=ambari-server
