@@ -1,47 +1,214 @@
 ---
 apiVersion: v1
-kind: ReplicationController
+kind: Service
 metadata:
-  name: amb-agent
+  name: ambari0
+  namespace: ambari
+spec:
+  selector:
+    name: amb-agent
+  clusterIP: None
+  ports:
+    - name: amb
+      port: 8080
+      targetPort: 8080
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: amb-agent-0
   namespace: ambari
   labels:
     name: amb-agent
 spec:
-  replicas: 5
-  selector:
+  hostname: amb-agent-0
+  subdomain: ambari0
+  containers:
+  - name: amb-agent
+    image: cool2zap/ambari-agent:latest
+    securityContext:
+      privileged: true
+    resources:
+      requests:
+        memory: "6G"
+        cpu: "2000m"
+      limits:
+        memory: "20G"
+        cpu: "3000m"
+    volumeMounts:
+        - name: ambari-conf
+          mountPath: /etc/systemd/system/ambari-agent.service.d
+        - name: ambari-scripts
+          mountPath: /scripts
+    env:
+      - name: USE_CONSUL_DNS
+        value: "false"
+      - name: AMBARI_SERVER
+        value: ambari-server
+  volumes:
+      - name: ambari-conf
+        configMap:
+            name: ambari-agent
+      - name: ambari-scripts
+        configMap:
+            name: ambari-agent-scripts
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: amb-agent-1
+  namespace: ambari
+  labels:
     name: amb-agent
-  template:
-    metadata:
-      labels:
-        name: amb-agent
-    spec:
-      containers:
-      - name: amb-agent
-        image: cool2zap/ambari-agent:latest
-        securityContext:
-          privileged: true
-        resources:
-          requests:
-            memory: "6G"
-            cpu: "2000m"
-          limits:
-            memory: "20G"
-            cpu: "3000m"
-        volumeMounts:
-            - name: ambari-conf
-              mountPath: /etc/systemd/system/ambari-agent.service.d
-            - name: ambari-scripts
-              mountPath: /scripts
-        env: 
-          - name: USE_CONSUL_DNS
-            value: "false"
-          - name: AMBARI_SERVER
-            value: ambari-server
-      volumes:
-          - name: ambari-conf
-            configMap: 
-                name: ambari-agent
-          - name: ambari-scripts
-            configMap: 
-                name: ambari-agent-scripts
-
+spec:
+  hostname: amb-agent-1
+  subdomain: ambari0
+  containers:
+  - name: amb-agent
+    image: cool2zap/ambari-agent:latest
+    securityContext:
+      privileged: true
+    resources:
+      requests:
+        memory: "6G"
+        cpu: "2000m"
+      limits:
+        memory: "20G"
+        cpu: "3000m"
+    volumeMounts:
+        - name: ambari-conf
+          mountPath: /etc/systemd/system/ambari-agent.service.d
+        - name: ambari-scripts
+          mountPath: /scripts
+    env:
+      - name: USE_CONSUL_DNS
+        value: "false"
+      - name: AMBARI_SERVER
+        value: ambari-server
+  volumes:
+      - name: ambari-conf
+        configMap:
+            name: ambari-agent
+      - name: ambari-scripts
+        configMap:
+            name: ambari-agent-scripts
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: amb-agent-2
+  namespace: ambari
+  labels:
+    name: amb-agent
+spec:
+  hostname: amb-agent-2
+  subdomain: ambari0
+  containers:
+  - name: amb-agent
+    image: cool2zap/ambari-agent:latest
+    securityContext:
+      privileged: true
+    resources:
+      requests:
+        memory: "6G"
+        cpu: "2000m"
+      limits:
+        memory: "20G"
+        cpu: "3000m"
+    volumeMounts:
+        - name: ambari-conf
+          mountPath: /etc/systemd/system/ambari-agent.service.d
+        - name: ambari-scripts
+          mountPath: /scripts
+    env:
+      - name: USE_CONSUL_DNS
+        value: "false"
+      - name: AMBARI_SERVER
+        value: ambari-server
+  volumes:
+      - name: ambari-conf
+        configMap:
+            name: ambari-agent
+      - name: ambari-scripts
+        configMap:
+            name: ambari-agent-scripts
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: amb-agent-3
+  namespace: ambari
+  labels:
+    name: amb-agent
+spec:
+  hostname: amb-agent-3
+  subdomain: ambari0
+  containers:
+  - name: amb-agent
+    image: cool2zap/ambari-agent:latest
+    securityContext:
+      privileged: true
+    resources:
+      requests:
+        memory: "6G"
+        cpu: "2000m"
+      limits:
+        memory: "20G"
+        cpu: "3000m"
+    volumeMounts:
+        - name: ambari-conf
+          mountPath: /etc/systemd/system/ambari-agent.service.d
+        - name: ambari-scripts
+          mountPath: /scripts
+    env:
+      - name: USE_CONSUL_DNS
+        value: "false"
+      - name: AMBARI_SERVER
+        value: ambari-server
+  volumes:
+      - name: ambari-conf
+        configMap:
+            name: ambari-agent
+      - name: ambari-scripts
+        configMap:
+            name: ambari-agent-scripts
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: amb-agent-4
+  namespace: ambari
+  labels:
+    name: amb-agent
+spec:
+  hostname: amb-agent-4
+  subdomain: ambari0
+  containers:
+  - name: amb-agent
+    image: cool2zap/ambari-agent:latest
+    securityContext:
+      privileged: true
+    resources:
+      requests:
+        memory: "6G"
+        cpu: "2000m"
+      limits:
+        memory: "20G"
+        cpu: "3000m"
+    volumeMounts:
+        - name: ambari-conf
+          mountPath: /etc/systemd/system/ambari-agent.service.d
+        - name: ambari-scripts
+          mountPath: /scripts
+    env:
+      - name: USE_CONSUL_DNS
+        value: "false"
+      - name: AMBARI_SERVER
+        value: ambari-server
+  volumes:
+      - name: ambari-conf
+        configMap:
+            name: ambari-agent
+      - name: ambari-scripts
+        configMap:
+            name: ambari-agent-scripts

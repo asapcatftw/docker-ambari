@@ -33,6 +33,3 @@ RUN echo DefaultEnvironment=\"JAVA_HOME=$JAVA_HOME\" >> /etc/systemd/system.conf
 
 EXPOSE 8080
 
-ADD startserver.sh ./
-
-CMD ["/tmp/startserver.sh"]
